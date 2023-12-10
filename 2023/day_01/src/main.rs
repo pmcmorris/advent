@@ -1,4 +1,3 @@
-use std::error::Error;
 use std::fs;
 
 fn first_last_digit(s: &str) -> Option<(u64, u64)> {
@@ -19,19 +18,22 @@ fn first_last_digit(s: &str) -> Option<(u64, u64)> {
     None
 }
 
-fn main() -> Result<(), Box<dyn Error>> {
-    let data: String = fs::read_to_string("data/input.txt")?;
+fn part_one(data: &str) {
     let mut sum = 0;
     for line in data.lines() {
         if let Some((first, last)) = first_last_digit(line) {
             let value = first * 10 + last;
-            println!("{line}: ({first}, {last})={value}");
+            //println!("{line}: ({first}, {last})={value}");
             sum += value;
         } else {
             panic!("error: no digits");
         }
     }
 
-    println!("sum: {sum}");
-    Ok(())
+    println!("part one sum: {sum}");
+}
+
+fn main() {
+    let data: String = fs::read_to_string("data/input.txt").unwrap();
+    part_one(&data);
 }
