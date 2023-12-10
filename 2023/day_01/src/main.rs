@@ -20,7 +20,7 @@ fn first_last_digit(s: &str) -> Option<(u64, u64)> {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let data: String = fs::read_to_string("data/example.txt")?;
+    let data: String = fs::read_to_string("data/input.txt")?;
     let mut sum = 0;
     for line in data.lines() {
         if let Some((first, last)) = first_last_digit(line) {
